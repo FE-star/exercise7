@@ -1,0 +1,26 @@
+{
+  "name": "exercise7",
+  "version": "0.0.1",
+  "description": "regex",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FE-star/exercise7.git"
+  },
+  "keywords": [
+    "regex"
+  ],
+  "author": "Daniel Yang",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/FE-star/exercise7/issues"
+  },
+  "homepage": "https://github.com/FE-star/exercise7#readme",
+  "devDependencies": {
+    "marked": "^0.3.6",
+    "mocha": "^3.5.0"
+  }
+}
