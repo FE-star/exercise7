@@ -85,8 +85,8 @@ describe('regex', function () {
       '@@**cool**@@'
     )
     assert.equal(
-      f('beep @@boop@@ says *the* @@**robot**@@!').trim(),
-      '<p>beep <blink>boop</blink> says <em>the</em>'
+      f('beep @@bo op@@ says *the* @@**robot**@@!').trim(),
+      '<p>beep <blink>bo op</blink> says <em>the</em>'
         + ' <blink><strong>robot</strong></blink>!</p>',
       'beep @@boop@@ says *the* @@**robot**@@!'
     )
