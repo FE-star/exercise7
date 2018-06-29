@@ -68,7 +68,7 @@ describe('regex', function () {
 
   it(`将'@@...@@'markdown语法变成'<blink>...</blink>'`, function () {
     const f = require('../lib/blink')
-    
+
     assert.equal(
       f('@@whatever@@').trim(),
       '<p><blink>whatever</blink></p>',
@@ -91,4 +91,5 @@ describe('regex', function () {
       'beep @@boop@@ says *the* @@**robot**@@!'
     )
   })
+
 })
