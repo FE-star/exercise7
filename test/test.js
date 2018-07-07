@@ -7,6 +7,8 @@ describe('regex', function () {
     assert.equal(f('x=5'), '5', 'x=5')
     assert.equal(f('abc x=5'), '5', 'abc x=5')
     assert.equal(f('x=abc'), null, 'x=abc')
+    assert.equal(f('x=0'), '0', 'x=0')
+    assert.equal(f('x=-10'), null, 'x=-10')
     assert.equal(f('beep x=123123 boop'), '123123', 'beep x=123123 boop')
   })
 
@@ -20,6 +22,7 @@ describe('regex', function () {
     assert.equal(f('x=33qrs'), null, 'x=33qrs')
     assert.equal(f('3x=33'), null, '3x=33')
     assert.equal(f('beep x=123123 boop'), '123123', 'beep x=123123 boop')
+    assert.equal(f('beep x=123123 ax=2'), '123123', 'beep x=123123 boop')
   })
 
   it(`匹配8位 hex 代码，以'0x'开头，后面跟着两个字符可以是大写'A-F'，小写'a-f'，或者任意数字`, function () {
