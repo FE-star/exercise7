@@ -17,7 +17,7 @@ describe('regex', function () {
     assert.equal(f('abc x=5'), '5', 'abc x=5')
     assert.equal(f('fox=123'), null, 'fox=123')
     assert.equal(f('x=abc'), null, 'x=abc')
-    assert.equal(f('x=33qrs'), null, 'x=33qrs')
+    assert.equal(f('x=33qrs'), null, 'x=33qrs') //e x=33
     assert.equal(f('3x=33'), null, '3x=33')
     assert.equal(f('beep x=123123 boop'), '123123', 'beep x=123123 boop')
   })
@@ -42,11 +42,11 @@ describe('regex', function () {
       '0xE2 0xC3 0xB3 0xD0 0x44 0x9E 0x6F 0x7F\\n'
     )
     assert.ok(
-      !f('0xE2 0xC3 0xB3 0xD0 0x44 0x9E 0x6F\n'),
+      !f('0xE2 0xC3 0xB3 0xD0 0x44 0x9E 0x6F\n'), // 7
       '0xE2 0xC3 0xB3 0xD0 0x44 0x9E 0x6F\n'
     )
     assert.ok(
-      !f('0xE2 0xC3 0xB3 0xD0 0x44 0x9E 0x6F 0xff 0xff\n'),
+      !f('0xE2 0xC3 0xB3 0xD0 0x44 0x9E 0x6F 0xff 0xff\n'), // 9
       '0xE2 0xC3 0xB3 0xD0 0x44 0x9E 0x6F 0xff 0xff\n'
     )
   })
@@ -68,7 +68,6 @@ describe('regex', function () {
 
   it(`将'@@...@@'markdown语法变成'<blink>...</blink>'`, function () {
     const f = require('../lib/blink')
-    
     assert.equal(
       f('@@whatever@@').trim(),
       '<p><blink>whatever</blink></p>',
@@ -76,7 +75,7 @@ describe('regex', function () {
     )
     assert.equal(
       f('*abc* @@def@@ __ghi__').trim(),
-      '<p><em>abc</em> <blink>def</blink> <strong>ghi</strong></p>',
+      '<p><em>abc</em> <blink>def</blink> <strong>ghi</strong></p>'.trim(),
       '*abc* @@def@@ __ghi__'
     )
     assert.equal(
@@ -86,8 +85,8 @@ describe('regex', function () {
     )
     assert.equal(
       f('beep @@boop@@ says *the* @@**robot**@@!').trim(),
-      '<p>beep <blink>boop</blink> says <em>the</em>'
-        + ' <blink><strong>robot</strong></blink>!</p>',
+      ('<p>beep <blink>boop</blink> says <em>the</em>'
+      + ' <blink><strong>robot</strong></blink>!</p>').trim(),
       'beep @@boop@@ says *the* @@**robot**@@!'
     )
   })
