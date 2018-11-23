@@ -3,7 +3,7 @@ const assert = require('assert')
 describe('regex', function () {
   it('可以捕获正整数 x 的值', function () {
     const f = require('../lib/capture')
-
+    console.log(f('x=5'))
     assert.equal(f('x=5'), '5', 'x=5')
     assert.equal(f('abc x=5'), '5', 'abc x=5')
     assert.equal(f('x=abc'), null, 'x=abc')
