@@ -12,7 +12,7 @@ describe('regex', function () {
 
   it('可以捕获正整数 x 的值，末尾带有 x 的变量不应当被捕获', function () {
     const f = require('../lib/capture_breakword')
-
+    console.log(f('x=5'))
     assert.equal(f('x=5'), '5', 'x=5')
     assert.equal(f('abc x=5'), '5', 'abc x=5')
     assert.equal(f('fox=123'), null, 'fox=123')
@@ -68,7 +68,7 @@ describe('regex', function () {
 
   it(`将'@@...@@'markdown语法变成'<blink>...</blink>'`, function () {
     const f = require('../lib/blink')
-    
+
     assert.equal(
       f('@@whatever@@').trim(),
       '<p><blink>whatever</blink></p>',
