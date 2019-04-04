@@ -20,7 +20,7 @@
   },
   "homepage": "https://github.com/FE-star/exercise7#readme",
   "devDependencies": {
-    "marked": "^0.3.6",
+    "marked": "^0.3.19",
     "mocha": "^3.5.0"
   }
 }
