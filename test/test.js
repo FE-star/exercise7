@@ -1,7 +1,7 @@
 const assert = require('assert')
 
 describe('regex', function () {
-  it('可以捕获正整数 x 的值', function () {
+  it.only('可以捕获正整数 x 的值', function () {
     const f = require('../lib/capture')
 
     assert.equal(f('x=5'), '5', 'x=5')
@@ -10,7 +10,7 @@ describe('regex', function () {
     assert.equal(f('beep x=123123 boop'), '123123', 'beep x=123123 boop')
   })
 
-  it('可以捕获正整数 x 的值，末尾带有 x 的变量不应当被捕获', function () {
+  it.only('可以捕获正整数 x 的值，末尾带有 x 的变量不应当被捕获', function () {
     const f = require('../lib/capture_breakword')
 
     assert.equal(f('x=5'), '5', 'x=5')
@@ -22,7 +22,7 @@ describe('regex', function () {
     assert.equal(f('beep x=123123 boop'), '123123', 'beep x=123123 boop')
   })
 
-  it(`匹配8位 hex 代码，以'0x'开头，后面跟着两个字符可以是大写'A-F'，小写'a-f'，或者任意数字`, function () {
+  it.only(`匹配8位 hex 代码，以'0x'开头，后面跟着两个字符可以是大写'A-F'，小写'a-f'，或者任意数字`, function () {
     const f = require('../lib/quantified_group')
 
     assert.ok(
@@ -51,24 +51,24 @@ describe('regex', function () {
     )
   })
 
-  it('匹配所有引号', function () {
+  it.only('匹配所有引号', function () {
     const f = require('../lib/quotes')
     assert.deepEqual(
       f('one "two three four" five six "seven eight" nine'),
-      ['"two three four"','"seven eight"'],
+      ['"two three four"', '"seven eight"'],
       'one "two three four" five six "seven eight" nine'
     )
     assert.deepEqual(
       f('"beep boop" whatever "tacos" eleven "eighty"'),
-      ['"beep boop"','"tacos"','"eighty"'],
+      ['"beep boop"', '"tacos"', '"eighty"'],
       '"beep boop" whatever "tacos" eleven "eighty"'
     )
     assert.deepEqual(f('empty ""'), ['""'], 'empty ""')
   })
 
-  it(`将'@@...@@'markdown语法变成'<blink>...</blink>'`, function () {
+  it.only(`将'@@...@@'markdown语法变成'<blink>...</blink>'`, function () {
     const f = require('../lib/blink')
-    
+
     assert.equal(
       f('@@whatever@@').trim(),
       '<p><blink>whatever</blink></p>',
@@ -86,8 +86,8 @@ describe('regex', function () {
     )
     assert.equal(
       f('beep @@boop@@ says *the* @@**robot**@@!').trim(),
-      '<p>beep <blink>boop</blink> says <em>the</em>'
-        + ' <blink><strong>robot</strong></blink>!</p>',
+      '<p>beep <blink>boop</blink> says <em>the</em>' +
+      ' <blink><strong>robot</strong></blink>!</p>',
       'beep @@boop@@ says *the* @@**robot**@@!'
     )
   })
